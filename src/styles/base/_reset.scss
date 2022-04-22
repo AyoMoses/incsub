@@ -4,7 +4,6 @@
   -webkit-box-sizing: border-box;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  /* 2 */
 }
 
 /* Box sizing rules */
@@ -26,7 +25,8 @@ body {
   /* update text-align value to left; on latin screens*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: 'GT Walsheim Pro';
+  font-family: $global-font;
+  text-rendering: optimizeLegibility;
 }
 
 main {
@@ -35,11 +35,8 @@ main {
 
 hr {
   box-sizing: content-box;
-  /* 1 */
   height: 0;
-  /* 1 */
   overflow: visible;
-  /* 2 */
 }
 
 a {
@@ -49,11 +46,8 @@ a {
 
 abbr[title] {
   border-bottom: none;
-  /* 1 */
   text-decoration: underline;
-  /* 2 */
   text-decoration: underline dotted;
-  /* 2 */
 }
 
 b,
@@ -96,19 +90,16 @@ optgroup,
 select,
 textarea {
   margin: 0;
-  /* 2 */
   outline: none;
 }
 
 button,
 input {
-  /* 1 */
   overflow: visible;
 }
 
 button,
 select {
-  /* 1 */
   text-transform: none;
 }
 
@@ -149,17 +140,11 @@ fieldset {
 
 legend {
   box-sizing: border-box;
-  /* 1 */
   color: inherit;
-  /* 2 */
   display: table;
-  /* 1 */
   max-width: 100%;
-  /* 1 */
   padding: 0;
-  /* 3 */
   white-space: normal;
-  /* 1 */
 }
 
 progress {
@@ -174,9 +159,7 @@ textarea {
 [type='radio'],
 [type='date'] {
   box-sizing: border-box;
-  /* 1 */
   padding: 0;
-  /* 2 */
 }
 
 [type='number']::-webkit-inner-spin-button,
@@ -186,12 +169,10 @@ textarea {
 
 [type='search'] {
   -webkit-appearance: textfield;
-  /* 1 */
+
   outline-offset: -2px;
-  /* 2 */
 
   &::-webkit-search-cancel-button {
-    /* Remove default */
     -webkit-appearance: none;
   }
 }
@@ -202,9 +183,7 @@ textarea {
 
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
-  /* 1 */
   font: inherit;
-  /* 2 */
 }
 
 details {
@@ -223,13 +202,12 @@ template {
   display: none;
 }
 
-/* Remove default padding */
+
 ul,
 ol {
   padding: 0;
 }
 
-/* Remove default margin */
 body,
 h1,
 h2,
@@ -248,7 +226,7 @@ dd {
 }
 
 p {
-  font-family: 'GT Walsheim Pro';
+  font-family: $global-font;
   display: block;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -261,7 +239,7 @@ h4,
 h5,
 h6 {
   padding: 0;
-  font-family: 'GT Walsheim Pro';
+  font-family: $global-font;
 }
 
 /* Remove list styles on ul, ol */

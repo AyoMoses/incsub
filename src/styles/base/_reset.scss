@@ -20,9 +20,7 @@ body {
   line-height: 1.5;
   margin: 0;
   direction: rtl;
-  /* update text-align value to right;  on latin screens*/
   direction: ltr;
-  /* update text-align value to left; on latin screens*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: $global-font;
@@ -242,7 +240,6 @@ h6 {
   font-family: $global-font;
 }
 
-/* Remove list styles on ul, ol */
 ul,
 ol,
 li {
@@ -284,7 +281,7 @@ button:hover {
   }
 }
 
-// STORYBOOK PADDING REMOVAL
+// STORYBOOK PADDING REMOVAL - BUT FOR THIS TEST I WON'T BE USING STORYBOOK
 .sb-show-main.sb-main-padded {
   padding: 0;
 }

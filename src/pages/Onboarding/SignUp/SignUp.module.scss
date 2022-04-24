@@ -53,9 +53,12 @@
     }
     .authColTwoSubHeader {
       font-weight: 400;
-      font-size: toRem(16px);
-      line-height: toRem(14px);
+      font-size: toRem(18px);
+      line-height: toRem(32px);
       color: inherit;
+      width: 100%;
+      max-width: calc(100% - 40%);
+      margin: toRem(80px) auto 0 auto;
     }
   }
 }

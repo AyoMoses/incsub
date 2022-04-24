@@ -1,143 +1,103 @@
-// OUR Z-INDEX SHOULD BE USED THIS WAY. SO WE DON'T HAVE DIFFERENT Z-INDEX FLYING AROUND
-// use @include z-index(fill-page); for example
-@use "sass:math";
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
 
-$z-index: (
-  fill-page: 60,
-  modal: 50,
-  dropdown-menu: 40,
-  navigation: 30,
-  underlay: 20,
-  overlay: 10,
-  normal: 5,
-  behind: -1,
-);
-
-@function z-index($key) {
-  @return map-get($z-index, $key);
-}
-
-@mixin z-index($key) {
-  z-index: z-index($key);
-}
-// Z INDEX
-
-@mixin deskTopFirst($media) {
-  @media screen and (max-width: math.div($media, 16)+rem) {
-    @content;
-  }
-}
-
-// MOBILE FIRST MEDIA QUERY
-@mixin respond($breakpoint) {
+@mixin respondMin($breakpoint) {
   @if $breakpoint==mini-phone {
-    @media only screen and (max-width: 21.875em) {
+    @media only screen and (min-width: 21.875rem) {
       @content;
     }
 
-    // < 350px
+    // > 350px
   }
 
   @if $breakpoint==smallest-phone {
-    @media only screen and (max-width: 23.4375em) {
+    @media only screen and (min-width: 23.4375rem) {
       @content;
     }
 
-    // < 375px
+    // > 375px
   }
 
   @if $breakpoint==smaller-phone {
-    @media only screen and (max-width: 26.5625em) {
+    @media only screen and (min-width: 26.5625rem) {
       @content;
     }
 
-    // < 425px
+    // > 425px
   }
 
   @if $breakpoint==small-phone {
-    @media only screen and (max-width: 31.25em) {
+    @media only screen and (min-width: 31.25rem) {
       @content;
     }
 
-    // < 500px
+    // > 500px
   }
 
   @if $breakpoint==phone {
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (min-width: 7.5rem) {
       @content;
     }
 
-    // < 600px
-  }
-
-  @if $breakpoint==tab {
-    @media only screen and (max-width: 48em) {
-      @content;
-    }
-
-    // < 768px
+    // > 600px
   }
 
   @if $breakpoint==big-tab {
-    @media only screen and (max-width: 56.25em) {
+    @media only screen and (min-width: 62.5rem) {
       @content;
     }
 
-    // < 900px
+    // > 1000px
+  }
+
+  @if $breakpoint==mid-laptop {
+    @media only screen and (min-width: 70rem) {
+      @content;
+    }
+
+    // > 1120px
   }
 
   @if $breakpoint==mini-laptop {
-    @media only screen and (max-width: 78.75em) {
+    @media only screen and (min-width: 75rem) {
       @content;
     }
 
-    // < 1060px
+    // > 1200px
+  }
+
+  @if $breakpoint==laptop {
+    @media only screen and (min-width: 85.375rem) {
+      @content;
+    }
+
+    // > 1366px
   }
 
   @if $breakpoint==max-laptop {
-    @media only screen and (max-width: 95em) {
+    @media only screen and (min-width: 95rem) {
       @content;
     }
 
-    // < 1430px
+    // > 1430px
+  }
+
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 112.5rem) {
+      @content;
+    }
+
+    // > 1800px
   }
 }
 
-@mixin home-layer {
-  max-width: calc(100% - 280px);
-  margin: 0 auto;
-
-  @include respond(big-tab) {
-    max-width: calc(100% - 38px);
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
   }
-}
-@mixin home-marginWeb {
-  max-width: calc(100% - 280px);
-  margin: 0 auto;
-  @include respond(big-tab) {
-    max-width: 100%;
-    margin: 0;
-  }
-}
-@mixin home-marginMobile {
-  @include respond(big-tab) {
-    max-width: calc(100% - 38px);
-    margin: 0 auto;
-  }
-}
-
-@mixin position-absolute-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin position-fixed-center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 @mixin border-radius($pixel...) {
@@ -148,12 +108,39 @@ $z-index: (
   -o-border-radius: $pixel;
 }
 
-@mixin filter($value) {
-  filter: $value();
-  -webkit-filter: $value();
+@mixin box-shadow($shadow...) {
+  box-shadow: $shadow;
 }
 
-//   SCALE ELEMENT FOR HOVER EFFECT
+@mixin paddings($padding...) {
+  padding: $padding;
+}
+
+@mixin margins($margin...) {
+  margin: $margin;
+}
+
+@mixin btn-style($background, $color, $width, $height, $border) {
+  background: $background;
+  color: $color;
+  width: $width;
+  height: $height;
+  outline: none;
+  border: $border;
+}
+
+@mixin btn-reset {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+@mixin filter($value) {
+  filter: $value;
+  -webkit-filter: $value;
+}
+
 @mixin scale($scale) {
   transform: scale($scale);
   -webkit-transform: scale($scale);
@@ -162,20 +149,28 @@ $z-index: (
   -o-transform: scale($scale);
 }
 
-@mixin transition {
-  transition: all 0.3s ease-out;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
+@mixin transition($trans...) {
+  transition: $trans;
+  -webkit-transition: $trans;
+  -moz-transition: $trans;
+  -ms-transition: $trans;
+  -o-transition: $trans;
 }
 
 @mixin transition-color {
-  transition: color 0.3s ease-out;
-  -webkit-transition: color 0.3s ease-out;
-  -moz-transition: color 0.3s ease-out;
-  -ms-transition: color 0.3s ease-out;
-  -o-transition: color 0.3s ease-out;
+  transition: color 0.2s linear;
+  -webkit-transition: color 0.2s linear;
+  -moz-transition: color 0.2s linear;
+  -ms-transition: color 0.2s linear;
+  -o-transition: color 0.2s linear;
+}
+
+@mixin transition-all {
+  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
 }
 
 // FLEX FLOW
@@ -214,16 +209,7 @@ $z-index: (
   flex-direction: column;
 }
 
-@mixin grid($repeat) {
-  display: grid;
-  grid-template-columns: repeat($repeat, 1fr);
-}
-
-@mixin grid-center {
-  display: grid;
-  place-items: center;
-}
-
+// HIDE SCROLLBAR
 @mixin scrollbar-hide {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -233,6 +219,7 @@ $z-index: (
   }
 }
 
+// SHOW SCROLLBAR
 @mixin scrollbar-show(
   $barWidth,
   $borderWidth,
@@ -268,11 +255,13 @@ $z-index: (
   }
 }
 
+// REMOVE ANIMATION BACKFACAE VISIBILITY
 @mixin backface-visibility($status) {
   backface-visibility: $status;
   -webkit-backface-visibility: $status;
 }
 
+/* LINE CLAMP */
 @mixin line-clamp($lines) {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -281,32 +270,18 @@ $z-index: (
   -webkit-box-orient: vertical;
 }
 
+@mixin vertical-line($width, $color, $type, $height) {
+  border-right: $width $type $color;
+  height: $height;
+}
+
+@mixin horizontal-line($height, $type, $color, $width) {
+  border-top: $height $type $color;
+  width: $width;
+}
+
+/// INPUT FORM PLACEHOLDER
 @mixin placeholder($color) {
-  /* WebKit, Edge */
-  &::-webkit-input-placeholder {
-    color: $color;
-  }
-
-  /* Firefox 4-18 */
-  &:-moz-placeholder {
-    color: $color;
-  }
-
-  /* Firefox 19+ */
-  &::-moz-placeholder {
-    color: $color;
-  }
-
-  /* IE 10-11 */
-  &:-ms-input-placeholder {
-    color: $color;
-  }
-
-  /* Edge */
-  &::-ms-input-placeholder {
-    color: $color;
-  }
-
   /* MODERN BROWSER */
   &::-webkit-input-placeholder {
     color: $color;
@@ -325,7 +300,14 @@ $z-index: (
   }
 }
 
-@mixin vertical-line($width, $color, $type, $height) {
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin vertical-line($width, $type, $color, $height) {
   border-right: $width $type $color;
   height: $height;
 }
@@ -335,24 +317,67 @@ $z-index: (
   width: $width;
 }
 
-@mixin skeleton {
-  background-image: linear-gradient(
-      100deg,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.5) 50%,
-      rgba(255, 255, 255, 0) 80%
-    ),
-    linear-gradient(lightgray 100%, transparent 0);
+@mixin double-layer {
+  width: 100%;
+  max-width: calc(100% - 16px);
+  margin: 0 auto;
 
-  background-repeat: no-repeat;
-  background-size: 100px 100%, 100% 100%;
-  background-position: 0 0, 0 0;
+  @include mobileFirst(800) {
+    width: 100%;
+    max-width: calc(100% - 96px);
+    margin: 0 auto;
+  }
+}
 
-  animation: shine 1s infinite;
+@mixin rotate($value) {
+  transform: rotate($value);
+  -webkit-transform: rotate($value);
+  -moz-transform: rotate($value);
+  -ms-transform: rotate($value);
+  -o-transform: rotate($value);
+}
 
-  @keyframes shine {
-    to {
-      background-position: 300% 0, 0 0;
-    }
+@mixin lighten-color($myColor) {
+  background: lighten($color: $myColor, $amount: 5%);
+}
+@mixin darken-color($myColor) {
+  background: darken($color: $myColor, $amount: 5%);
+}
+
+@mixin radius-2px {
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+@mixin card-hover-shadow {
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+@mixin text-hover($text-color) {
+  &:hover {
+    color: $text-color;
+    @include transition(color 0.2s linear);
+  }
+
+  &:active {
+    color: lighten($color: $text-color, $amount: 5%);
+  }
+
+  &:focus {
+    color: darken($color: $text-color, $amount: 5%);
+  }
+}
+
+@mixin text-hover-lighten($text-color) {
+  &:hover {
+    color: $text-color;
+    @include transition(color 0.2s linear);
+  }
+
+  &:focus {
+    color: lighten($color: $text-color, $amount: 5%);
   }
 }

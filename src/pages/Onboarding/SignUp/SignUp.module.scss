@@ -1,5 +1,61 @@
-.wrapper {
-  background-color: darkcyan;
+@import '../../../styles/style.scss';
+.auth {
+  @include column;
   height: 100vh;
-  width: 100%;
+  @include respondMin(big-tab) {
+    display: grid;
+    grid-template-columns: 1fr 35%;
+  }
+  .authColOne {
+    background-color: $col-bg;
+
+    .authSteps {
+      padding-top: 1.5rem;
+      padding-right: 2rem;
+      @include row;
+      justify-content: flex-end;
+    }
+    .authStepsText {
+      color: $col-text;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    .authStepsDots {
+      @include row;
+      align-items: center;
+      margin-left: 1rem;
+      column-gap: 0.6rem;
+    }
+    .authStepsDotActive,
+    .authStepsDot {
+      @include border-radius(100vh);
+      width: 4px;
+      height: 4px;
+    }
+    .authStepsDotActive {
+      background-color: $col-text;
+    }
+    .authStepsDot {
+      background-color: $col-grey-dark;
+    }
+  }
+  .authColTwo {
+    @include flex-column;
+    background-color: $col-primary;
+    color: $col-white;
+
+    .authColTwoHeader {
+      font-weight: 400;
+      font-size: toRem(24px);
+      line-height: toRem(14px);
+      text-transform: capitalize;
+      color: inherit;
+    }
+    .authColTwoSubHeader {
+      font-weight: 400;
+      font-size: toRem(16px);
+      line-height: toRem(14px);
+      color: inherit;
+    }
+  }
 }

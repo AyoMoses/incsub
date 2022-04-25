@@ -1,0 +1,59 @@
+@import '../../styles/style.scss';
+
+.didLloatingLabelContent {
+    position: relative;
+    // margin-bottom: 20px;
+}
+
+  .didFloatingLabel {
+    color: #878787;
+    font-size: toRem(14.5px);
+    font-weight: 600;
+    text-transform: capitalize;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 13px;
+    padding: 0 5px;
+    background: $col-bg;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+    -ms-transition: 0.2s ease all;
+    -o-transition: 0.2s ease all;
+
+    &[data-focused='true'] {
+        top: -10px;
+        font-size: toRem(12px);
+    }
+  }
+  
+  .didFloatingInput{
+    @include border-radius(4px);
+    font-size: toRem(17px);
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    background: transparent;
+    color: #474747;
+    font-weight: 400;
+    border: 1px solid #e6e5e5;
+    box-sizing: border-box;
+    
+    &:focus {
+      outline: none;
+      ~ .didFloatingLabel {
+        top: -10px;
+        font-size: toRem(12px);
+      }
+    }
+  }
+
+  .passwordBtn {
+      display: flex;
+      position: absolute;
+      top: 35%; //Change to -50% after wrapping input in div
+      right: 0.5rem;
+      transform: translate(-50%, -50%);
+  }

@@ -103,14 +103,6 @@
 .authFormBtn {
   background-color: $col-primary;
   color: $col-white;
-
-  &:hover {
-    box-shadow: 2px 2px 15px 0 rgba($color: $col-primary, $alpha: 0.6);
-  }
-}
-
-.authFormBtn,
-.authFormBtnDisabled {
   transition: all 0.3s linear;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
@@ -121,6 +113,16 @@
   height: 50px;
   text-transform: capitalize;
   font-weight: 600;
+
+  &:hover {
+    box-shadow: 2px 2px 15px 0 rgba($color: $col-primary, $alpha: 0.6);
+  }
+
+  &:disabled {
+    background-color: #ededed;
+  color: #acacac;
+  cursor: not-allowed;
+  }
 }
 
 .authFooterDetail {
@@ -134,13 +136,6 @@
   text-transform: capitalize;
   // margin-inline: 0.15rem;
   margin-right: 0.2rem;
-}
-
-// disabled class
-.authFormBtnDisabled {
-  background-color: #ededed;
-  color: #acacac;
-  cursor: not-allowed;
 }
 
 // refactor

@@ -40,7 +40,7 @@ function SignIn() {
           <h2 className={styles.authFormHeader}>Let's set up your account</h2>
           <p className={styles.authFormSubHeader}>
             Already have an account?
-            <Link to={'/sign-in'} className={styles.authFormLink}>
+            <Link to={'/'} className={styles.authFormLink}>
               Sign in
             </Link>
           </p>

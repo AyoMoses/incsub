@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SVG from 'react-inlinesvg';
 
-import styles from './style.module.scss';
+import styles from './input.module.scss';
 
 import eyeIcon from '../../assets/icons/eye-svg.svg';
 

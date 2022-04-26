@@ -1,35 +1,16 @@
 @import '../../../styles/style.scss';
 .auth {
   @include column;
+  width: 100%;
   height: 100vh;
+  overflow: hidden;
   @include respondMin(big-tab) {
     display: grid;
     grid-template-columns: 1fr 35%;
   }
 }
-.authColTwo {
-  @include flex-column;
-  background-color: $col-primary;
-  color: $col-white;
 
-  .authColTwoHeader {
-    font-weight: bold;
-    font-size: toRem(30px);
-    line-height: toRem(14px);
-    text-transform: capitalize;
-    color: inherit;
-  }
-  .authColTwoSubHeader {
-    font-weight: 400;
-    font-size: toRem(18px);
-    line-height: toRem(32px);
-    color: inherit;
-    width: 100%;
-    max-width: calc(100% - 40%);
-    margin: toRem(80px) auto 0 auto;
-  }
-}
-
+// FIRST COLUMN WITH FORMS AND STEPS STYLES BEGINS HERE
 .authColOne {
   background-color: $col-bg;
 
@@ -66,15 +47,23 @@
 
 .authFormsContainer {
   width: 100%;
-  max-width: calc(100% - 50%);
+  max-width: calc(100% - 60px);
   margin: 0 auto;
   height: 100%;
-  margin-top: 10rem;
+  margin-top: 3.5rem;
+
+  @include respondMin(big-tab) {
+    max-width: calc(100% - 50%);
+    margin-top: 10rem;
+  }
 
   .authFormHeader {
-    font-size: toRem(30px);
+    font-size: toRem(25px);
     text-align: left;
     color: #333333;
+    @include respondMin(big-tab) {
+      font-size: toRem(30px);
+    }
   }
   .authFormSubHeader {
     color: #5f5f5f;
@@ -128,17 +117,33 @@
     cursor: not-allowed;
   }
 }
+// FIRST COLUMN WITH FORMS AND STEPS STYLES ENDS HERE
 
-.authFooterDetail {
-  margin-top: toRem(40px);
-  color: #525252;
-  font-size: toRem(12px);
-  font-weight: 600;
+// COL TWO WITH BLUE BACKGROUND AND HEADER STYLES BEGINS HERE
+.authColTwo {
+  display: none;
+  @include respondMin(big-tab) {
+    @include flex-column;
+    background-color: $col-primary;
+    color: $col-white;
+  }
 
-  .authFooterLink {
-    color: $col-primary;
+  .authColTwoHeader {
     font-weight: bold;
+    font-size: toRem(30px);
+    line-height: toRem(14px);
     text-transform: capitalize;
-    margin-right: 0.2rem;
+    color: inherit;
+  }
+  .authColTwoSubHeader {
+    font-weight: 400;
+    font-size: toRem(18px);
+    line-height: toRem(32px);
+    color: inherit;
+    width: 100%;
+    max-width: calc(100% - 40%);
+    margin: toRem(80px) auto 0 auto;
   }
 }
+
+// COL TWO WITH BLUE BACKGROUND AND HEADER STYLES ENDS HERE

@@ -28,11 +28,11 @@ function SignIn() {
     <div className={styles.auth}>
       <div className={styles.authColOne}>
         <div className={styles.authSteps}>
-          <p className={styles.authStepsText}>Step 1 of 3</p>
+          <p className={styles.authStepsText}>Step 3 of 3</p>
           <div className={styles.authStepsDots}>
+            <span className={styles.authStepsDot} />
+            <span className={styles.authStepsDot} />
             <span className={styles.authStepsDotActive} />
-            <span className={styles.authStepsDot} />
-            <span className={styles.authStepsDot} />
           </div>
         </div>
 

@@ -1,9 +1,9 @@
-import { useState } from "react";
-import SVG from "react-inlinesvg";
+import { useState } from 'react';
+import SVG from 'react-inlinesvg';
 
-import styles from "./style.module.scss";
+import styles from './style.module.scss';
 
-import eyeIcon from "../../assets/icons/eye-svg.svg";
+import eyeIcon from '../../assets/icons/eye-svg.svg';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   error?: string;
@@ -11,7 +11,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = ({
-  type = "text",
+  type = 'text',
   label,
   error,
   ...props
@@ -19,28 +19,33 @@ export const Input = ({
   const [inputType, setInputType] = useState(() => type);
 
   const handleToggleType = () => {
-    setInputType((type) => (type === "password" ? "text" : "password"));
+    setInputType((type) => (type === 'password' ? 'text' : 'password'));
   };
 
   return (
-    <div className={styles.didLloatingLabelContent}>
-      {/* wrap input and the button  in a div. 
-      You'll need to adjust css that moves label up after that. The div should be positioned relative. 
-      This is needed so the icon will remain stationary even with a validation error */}
-      <input className={styles.didFloatingInput} type={inputType} {...props} />
-      {type === "password" && (
-        <button
-          type="button"
-          aria-label="toggle password"
-          className={styles.passwordBtn}
-          onClick={handleToggleType}
-        >
-          <SVG src={eyeIcon} width={16} height={16} />
-        </button>
-      )}
+    <div className={styles.authInputContainer}>
+      <div className={styles.authInputWrap}>
+        <input
+          className={styles.authInput}
+          type={inputType}
+          {...props}
+          data-error={Boolean(error)}
+        />
+        {type === 'password' && (
+          <button
+            type='button'
+            aria-label='toggle password'
+            className={styles.passwordBtn}
+            onClick={handleToggleType}
+          >
+            <SVG src={eyeIcon} width={16} height={16} />
+          </button>
+        )}
+      </div>
       <label
-        className={styles.didFloatingLabel}
-        data-focused={props.value !== ""}
+        className={styles.authInputLabel}
+        data-focused={props.value !== ''}
+        data-error={Boolean(error)}
       >
         {label}
       </label>

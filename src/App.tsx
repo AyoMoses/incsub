@@ -1,9 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage';
-import SignIn from './pages/Onboarding/SignIn/SignIn';
-import SignUp from './pages/Onboarding/SignUp/SignUp';
+import SignIn from './pages/Onboarding/SignIn';
+import SignUp from './pages/Onboarding/SignUp';
 import './styles/style.scss';
 
 function App() {
